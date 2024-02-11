@@ -8,6 +8,17 @@ const app = express();
 // Middleware to parse request body
 app.use(express.json());
 
+// Middleware to handle CORS policy
+// Option 1: Allow all origins with default of cors(*)
+app.use(cors());
+
+// Option 2: Allow custom origins
+// app.use(cors({
+//     origin: 'http://localhost:3000',
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//     allowedHeader: ['Content-Type'],
+// }));
+
 app.get('/', (request, response) => {
     console.log(request);
     return response.status(234).send('Book store');
